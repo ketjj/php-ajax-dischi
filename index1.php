@@ -1,3 +1,9 @@
+<?php 
+include __DIR__ . '/db.php';
+// var_dump($albums);
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,14 +31,13 @@
           <i class="fa-brands fa-spotify"></i>
         </div>
         
-        <div class="input-group k_group">
-          <select class="custom-select" id="inputGroupSelect04"
-          v-model="chooseGenre" placeholder="123">
-            <option value="">Seleziona un genere</option>
-            <option value="Rock">Rock</option>
-            <option value="Jazz">Jazz</option>
-            <option value="Pop">Pop</option>
-            <option value="Metal">Metal</option>
+        <div class="k_group">
+          <select name="genre" id="inputGroupSelect04"
+          v-model="selected">
+          <select v-model="selected">
+            <option value="all">all</option>
+            <option v-for="genere in generi" :value="genere">{{genere}}</option>
+          </select>
           </select>
         </div>
       </div>
@@ -40,27 +45,21 @@
 
     <main>
       <div class="k_container py-5">
-        <!-- <div v-if="isLoad" class="album-container"> -->
-          <!-- <div class="k_card">
-            <img :src="albumItem.poster" :alt="albumItem.title">
-            <div class="title-card">{{albumItem.title}}</div>
-        
-            <div class="singer-year">
-              <div>{{albumItem.author}}</div>
-              <div>{{albumItem.year}}</div>
-        
-            </div>
-          </div> -->
+        <!-- CICLARE LA CARD -->
+          <?php foreach($albums as $album) : ?>
           <div class="k_card">
-            <img src="https://i.scdn.co/image/ab67616d0000b2731cbb937b5dc5c3638a42cbc2">
-            <div class="title-card">ASSS</div>
+            <img src="<?php echo $album['image'] ?>">
+            <div class="title-card"><?php echo $album['title'] ?></div>
         
             <div class="singer-year">
-              <div>HJJJ</div>
-              <div>HMMM</div>
-        
+              <div><?php echo $album['artist'] ?></div>
+              <div><?php echo $album['releaseYear'] ?></div>
             </div>
           </div>
+        <?php endforeach; ?>
+        
+
+        <!-- //CICLARE LA CARD -->
         </div>
 
       <!-- <div v-else class="album-container2"> -->
