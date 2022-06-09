@@ -3,7 +3,8 @@ const app = new Vue({
 
   data:{
     albums: [],
-    apiURL: 'http://localhost/php/php-ajax-dischi/api.php',
+    genere: '',
+    apiURL: 'http://localhost/php/php-ajax-dischi/api.php?genere=',
   },
 
   mounted(){
@@ -12,10 +13,10 @@ const app = new Vue({
 
   methods: {
     getApi(){
-      axios.get(this.apiURL)
+      axios.get(this.apiURL + this.genere)
       .then(r =>{
         this.albums = r.data;
-        console.log(r.data)
+        // console.log(r.data);
       })
     }
   },

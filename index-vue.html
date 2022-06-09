@@ -24,8 +24,8 @@
         
         <div class="input-group k_group">
           <select class="custom-select" id="inputGroupSelect04"
-          v-model="chooseGenre"
-          @change="$emit('selectGenre', chooseGenre)">            
+          v-model="genere"
+          @change="getApi()">            
             <option value="">Seleziona un genere</option>
             <option value="Rock">Rock</option>
             <option value="Jazz">Jazz</option>

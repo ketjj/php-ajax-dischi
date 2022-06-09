@@ -49,8 +49,9 @@ include __DIR__ . '/db.php';
 
     <main>
       <div class="k_container py-5">
+        
         <!-- CICLARE LA CARD -->
-          <?php foreach($albums as $album) : ?>
+        <?php foreach($albums as $album) : ?>
           <div class="k_card">
             <img src="<?php echo $album['image'] ?>">
             <div class="title-card"><?php echo $album['title'] ?></div>
